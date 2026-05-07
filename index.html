@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <div class="logo-icon">&#10024;</div>
+            <span class="logo-text">Nova</span>
+          </div>
+          <button class="new-chat-btn" onclick="newChat()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New chat
+        </button>
+        </div>
+        <div class="sidebar-history">
+          <p class="history-label">Recent</p>
+          <div class="history-list" id="historyList"></div>
+        </div>
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <div class="user-avatar">N</div>
+            <span class="user-name">Nova User</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Chat Area -->
+      <main class="main">
+        <!-- Top bar -->
+        <div class="topbar">
+          <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <span class="model-label">Nova AI</span>
+          <div class="topbar-right">
+            <button class="icon-btn" title="Settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-container" id="chatContainer">
+          <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-icon">&#10024;</div>
+            <h1 class="welcome-title">How can I help you today?</h1>
+            <p class="welcome-subtitle">Nova is ready to assist you with anything you need.</p>
+            <div class="suggestion-grid">
+              <button class="suggestion-card" onclick="useSuggestion(this)">
+                <span class="suggestion-icon">&#128221;</span>
+                <span>Help me write a professional email</span>
+              </button>
+              <button class="suggestion-card" onclick="useSuggestion(this)">
+                <span class="suggestion-icon">&#128187;</span>
+                <span>Explain a coding concept simply</span>
+              </button>
+              <button class="suggestion-card" onclick="useSuggestion(this)">
+                <span class="suggestion-icon">&#129504;</span>
+                <span>Brainstorm creative ideas for me</span>
+              </button>
+              <button class="suggestion-card" onclick="useSuggestion(this)">
+                <span class="suggestion-icon">&#128218;</span>
+                <span>Summarize a long document</span>
+            </button>
+          </div>
+        </div>
+        <div class="messages-wrapper" id="messagesWrapper"></div>
+      </div>
+
+      <!-- Input Area -->
+        <div class="input-area">
+          <div class="input-container">
+            <textarea
+              class="message-input"
+              id="messageInput"
+              placeholder="Message Nova..."
+              rows="1"
+              onkeydown="handleKeyDown(event)"
+              oninput="autoResize(this)"
+            ></textarea>
+            <div class="input-actions">
+              <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+          <p class="input-disclaimer">Nova may make mistakes. Consider verifying important information.</p>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+  </html>

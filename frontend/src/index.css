@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background: #0d0d0d;
+    color: #ececec;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#root { height: 100vh; display: flex; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+.prose pre { background: #1a1a1a !important; border: 1px solid #2a2a2a; border-radius: 8px; }
+.prose code { color: #00D4FF; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; font-size: 0.875em; }
+.prose pre code { background: transparent; color: inherit; padding: 0; }
+.prose p { margin: 0.6em 0; }
+.prose ul, .prose ol { padding-left: 1.5em; margin: 0.6em 0; }
+.prose h1,.prose h2,.prose h3 { color: #fff; margin: 1em 0 0.5em; }
+.prose a { color: #00D4FF; text-decoration: underline; }
+.prose blockquote { border-left: 3px solid #00D4FF; padding-left: 1em; color: #8e8ea0; margin: 0.6em 0; }
+.prose table { border-collapse: collapse; width: 100%; margin: 0.6em 0; }
+.prose th,.prose td { border: 1px solid #2a2a2a; padding: 8px 12px; text-align: left; }
+.prose th { background: #1a1a1a; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.msg-enter { animation: fadeInUp 0.25s ease; }
+
+@keyframes blink { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+.streaming-cursor::after { content: '|'; animation: blink 0.8s infinite; color: #00D4FF; margin-left: 1px; }
